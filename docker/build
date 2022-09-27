@@ -7,4 +7,8 @@ ROOT=$(dirname $(realpath $0))
 eval $(${ROOT}/id)
 echo $DOCKER_IMAGE
 
+if [[ ! -z $(docker images -q $DOCKER_IMAGE) ]]; then
+    docker image rm $DOCKER_IMAGE
+fi
+
 docker build --network=host -t $DOCKER_IMAGE $ROOT
