@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -ex
+
+ROOT=$(dirname $(realpath $0))
+eval $(${ROOT}/id)
+
+CONTAINER_NAME="devenv-$DOCKER_VERSION-$DOCKER_TAG_ID"
+
+docker run --rm --user "$(id -g):$(id -u)" -it \
+    --hostname="docker" \
+    -v "${HOME}:/home/docker" \
+    --network=host \
+    --name=$CONTAINER_NAME \
+    --workdir=/home/docker/$(realpath --relative-to=$HOME $(pwd)) \
+$DOCKER_IMAGE
