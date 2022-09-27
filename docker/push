@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ROOT=$(dirname $(realpath $0))
+eval $(${ROOT}/id)
+docker push ngoalong911/${DOCKER_IMAGE}

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Make terminal green
+tput setaf 2
+
+ROOT=$(dirname $(realpath $0))
+eval $(${ROOT}/id)
+echo $DOCKER_IMAGE
+
+docker build --network=host -t $DOCKER_IMAGE $ROOT

@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+ROOT=$(dirname $(realpath $0))
+
+export DOCKER_REPO='ngoalong911/devenv-base'
+export DOCKER_TAG_ID=1
+DOCKER_IMAGE="${DOCKER_REPO}:${DOCKER_TAG_ID}"
+
+echo "DOCKER_IMAGE=$DOCKER_IMAGE" | envsubst
